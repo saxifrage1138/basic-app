@@ -13,9 +13,13 @@
     <script src="http://js.arcgis.com/3.7/"></script>
     <script>
       dojo.require("esri.map");
+      dojo.require("esri.SpatialReference");
 
       function init() {
-        var map = new esri.Map("map");
+        var customSR = new esri.SpatialReference({"wkid": 26910});
+        var map = new esri.Map("map", {
+          spatialReference: customSR
+        });
 
         //Cached map services
         var basemap1 = new esri.layers.ArcGISTiledMapServiceLayer("http://gis.abag.ca.gov/arcgis/rest/services/admin/region_RegionAreas/MapServer");
